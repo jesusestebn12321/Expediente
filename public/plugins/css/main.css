@@ -1,0 +1,44 @@
+:root{
+	--color-yellow:rgb(255, 251, 0);
+	--color-yellow-light:#27D4ED;
+	--color-blue:#008FFF;
+	--color-blue-dark:#279DFF;
+	--color-gray:#cccccc;
+	--color-green:#19a7ca77;
+	--color-white:white;
+	--color-black:rgba(0, 0, 0, .9);
+	--color-red:#ff1100b6;
+	
+}
+.app-heading-pdf{
+    background:#d40101c2 ;
+    text-align: center;
+    padding: 1rem;
+}
+.app-body-pdf{
+    background:repeating-linear-gradient(to left,
+    #6666658d 0%,
+    #535353b6 1%,
+    #5252529b 23%,
+    #42424270 49%,
+    #35353566 54%,
+    #505050d0 82%,
+    #575757ca 99%,
+    #626262c2 100%);
+    color:white;
+    text-align: center;
+    padding: 1rem;
+}
+.app-heading-img{
+    width: 7rem;
+
+}.app-img-DD-pdf{
+    border-radius: 5%;
+    width: 15rem;
+
+}.app-list-pdf{
+    background:repeating-linear-gradient( to right,rgba(190,190,190,0.301) 0%,rgba(190,190,190,0.301) 1%,rgba(216,216,216,0.401) 23%,rgba(220,220,220,0.401) 49%,rgba(220,220,220,0.401) 54%,rgba(216,216,216,0.401) 82%,rgba(190,190,190,0.301) 99%,rgba(190,190,190,0.301) 100%);
+}
+
+  
+  

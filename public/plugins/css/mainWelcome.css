@@ -1,0 +1,88 @@
+.app-footer{margin-top:40px;background:-webkit-linear-gradient(right,rgba(180,180,180,.7) 0%,rgba(200,200,200,.8) 15%,rgba(230,230,230,.8) 30%,rgba(250,250,250,.9) 47%,rgba(250,250,250,.9) 54%,rgba(230,230,230,.8) 75%,rgba(200,200,200,.8) 85%,rgba(180,180,180,.7) 100%);background:-o-linear-gradient(right,rgba(180,180,180,.7) 0%,rgba(200,200,200,.8) 15%,rgba(230,230,230,.8) 30%,rgba(250,250,250,.9) 47%,rgba(250,250,250,.9) 54%,rgba(230,230,230,.8) 75%,rgba(200,200,200,.8) 85%,rgba(180,180,180,.7) 100%);background:linear-gradient(to left,rgba(180,180,180,.7) 0%,rgba(200,200,200,.8) 15%,rgba(230,230,230,.8) 30%,rgba(250,250,250,.9) 47%,rgba(250,250,250,.9) 54%,rgba(230,230,230,.8) 75%,rgba(200,200,200,.8) 85%,rgba(180,180,180,.7) 100%);color:black;border-radius:none;}
+.fade-carousel {
+    position: relative;
+    height: 100vh;
+    
+}
+.fade-carousel .carousel-inner .item {
+    height: 100vh;
+}
+.fade-carousel .carousel-indicators > li {
+    margin: 0 2px;
+    background-color: #f39c12;
+    border-color: #f39c12;
+    opacity: .7;
+}
+.fade-carousel .carousel-indicators > li.active {
+  width: 10px;
+  height: 10px;
+  opacity: 1;
+}
+.hero {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.75);
+      -webkit-transform: translate3d(-50%,-50%,0);
+         -moz-transform: translate3d(-50%,-50%,0);
+          -ms-transform: translate3d(-50%,-50%,0);
+           -o-transform: translate3d(-50%,-50%,0);
+              transform: translate3d(-50%,-50%,0);
+}
+.hero h1 {
+    font-size: 6em;    
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+.fade-carousel .carousel-inner .item .hero {
+    opacity: 0;
+    -webkit-transition: 2s all ease-in-out .1s;
+       -moz-transition: 2s all ease-in-out .1s; 
+        -ms-transition: 2s all ease-in-out .1s; 
+         -o-transition: 2s all ease-in-out .1s; 
+            transition: 2s all ease-in-out .1s; 
+}
+.fade-carousel .carousel-inner .item.active .hero {
+    opacity: 1;
+    -webkit-transition: 2s all ease-in-out .1s;
+       -moz-transition: 2s all ease-in-out .1s; 
+        -ms-transition: 2s all ease-in-out .1s; 
+         -o-transition: 2s all ease-in-out .1s; 
+            transition: 2s all ease-in-out .1s;    
+}
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: #080d15;
+    opacity: .7;
+}
+.fade-carousel .slides .slide-1, 
+.fade-carousel .slides .slide-2,
+.fade-carousel .slides .slide-3 {
+  height: 100vh;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.fade-carousel .slides .slide-1 {
+  background-image: url(); 
+}
+.fade-carousel .slides .slide-2 {
+  background-image: url();
+}
+.fade-carousel .slides .slide-3 {
+  background-image: url();
+}
+@media screen and (min-width: 980px){
+    .hero { width: 980px; }    
+}
+@media screen and (max-width: 640px){
+    .hero h1 { font-size: 4em; }    
+}

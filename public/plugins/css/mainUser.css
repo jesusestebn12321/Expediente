@@ -1,0 +1,25 @@
+.hide {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+    }
+    
+    label[for="upload"] {
+        display: inline-block;
+        cursor:pointer;
+        padding: 10px 30px;
+        background-color: #ff4322;
+        color:#ffffff;
+        box-shadow: $shadow;
+        border-radius:2px;
+        transition: all 0.3s;
+        
+        &:hover {
+            box-shadow: $shadow-2;
+        }
+    }
+  
+  
