@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Expediente;
+use App\ImagenDni;
+use App\ImagenDocument;
+use App\ImagenPartida;
+use App\type_reason;
+use App\type;
 use App\User;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -38,7 +43,7 @@ class ExpedienteController extends Controller
      */
     public function store(Request $request){
         //
-        
+                    
         $demandante=User::where('dni',$request->dniDemandante)->first();
         $demandado=User::where('dni',$request->dniDemandado)->first();
         if(isset($demandante)){
@@ -47,19 +52,67 @@ class ExpedienteController extends Controller
                     $expediente=new Expediente;
                     
                     if ($request->file()) {
-                        $file = $request->file('imgDemandado');
-                        $name = 'Demandado-' .$request->dniDemandado .'_'.time() . '.' . $file->getClientOriginalExtension();
-                        $path = public_path() . '/uploads/images';
-                        $file->move($path, $name);
-                    }
+                        $extension=$request->file('imgDemandado')->getClientOriginalExtension();
+                        if($extension == 'jpg' || $extension=='png' ){
+                            // dd($extension);
+                            $file = $request->file('imgDemandado');
+                            $name = 'Demandado-' .$request->dniDemandado .'_'.time() . '.' . $extension;
+                            $path = public_path() . '/uploads/images/demandado';
+                            $file->move($path, $name);
+                        }
+                        $expediente->imgDemandado= $name;
+                        
+                        $extension=$request->file('imgDniDemandante')->getClientOriginalExtension();
+                        if($extension == 'pdf'){
+                            // dd($extension);
+                            $file = $request->file('imgDniDemandante');
+                            $name = 'dniDemandado-' .$request->dniDemandante .'_'.time() . '.' . $extension;
+                            $path = public_path() . '/uploads/images/dni';
+                            $file->move($path, $name);
+                        }
+                        $dniDemandante=new ImagenDni;
+                        $dniDemandante->imagen= $name;
+                        $dniDemandante->save();
 
-                    $expediente->imgDemandado= $name;
+                        $expediente->imagen_dni_id=$dniDemandante->id;
+// dni demandado
+                        // $extension=$request->file('imgDniDemandado')->getClientOriginalExtension();
+                        // if($extension == 'pdf'){
+                        //     // dd($extension);
+                        //     $file = $request->file('imgDniDemandado');
+                        //     $name = 'dniDemandante-' .$request->dniDemandado .'_'.time() . '.' . $extension;
+                        //     $path = public_path() . '/uploads/images/dni';
+                        //     $file->move($path, $name);
+                        // }
+                        // $dniDemandante=new ImagenDni;
+                        // $dniDemandante->img= $name;
+                        // $dniDemandante->save();
+
+                        // $expediente->imagen_dni_id=$dniDemandante->id;
+// dni demandado
+
+                        $extension=$request->file('imgPartida')->getClientOriginalExtension();
+                        if($extension == 'pdf'){
+                            // dd($extension);
+                            $file = $request->file('imgPartida');
+                            $name = 'partida-' .$request->dniDemandate .'_'.time() . '.' . $extension;
+                            $path = public_path() . '/uploads/images/partida';
+                            $file->move($path, $name);
+                        }
+                        $Partida=new ImagenPartida;
+                        $Partida->imagen= $name;
+                        $Partida->save();
+
+                        $expediente->imagen_partida_id=$Partida->id;
+
+                    }
                     
 
                     $expediente->code= 'JTS'.'-'.time().'-'.$request->dniDemandante;
                     $expediente->demandante_user_id=$demandante->id;
                     $expediente->demandado_user_id=$demandado->id;
-                    $expediente->type=$request->type;
+                    $expediente->imagen_document_id=1;
+                    $expediente->type_reason_id=1;
                     $expediente->save();
                     $message =  'Expediente Creado con Exito';
                     return redirect()->route('manageAdmin-Expediente-index')->with('message',$message);
@@ -117,7 +170,7 @@ class ExpedienteController extends Controller
         $demandado=User::where('dni',$request->dniDemandado)->first();
         $expediente->demandante_user_id=$demandante->id;
         $expediente->demandado_user_id =$demandado->id;
-        $expediente->code              =$request->code ; 
+        $expediente->code              =$request->code; 
         $expediente->type              =$request->type;
         $expediente->save();
         return redirect()->route('manageAdmin-Expediente-index');
