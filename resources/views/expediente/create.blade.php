@@ -25,28 +25,22 @@
                     <form class="form-horizontal" method="POST" action="{{route('manageAdmin-Expediente-store')}}" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="col-lg-6">
-                                    <ul class="list-group">
-                                        <li class="list-group-item app-list-pdf" >
-                                            <div class="row">
-                                                <div class="col-lg-7">
-                                                    <h2>Demandante</h2>
-                                                </div>
-                                                <div class="col-lg-5">
-                                                                     
-                                                </div>
+                                <ul class="list-group">
+                                    <li class="list-group-item app-list-pdf" >
+                                        <div class="row">
+                                            <div class="col-lg-7">
+                                                <h2>Demandante</h2>
                                             </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="form-group">
-                                                <label for="dniDemandante" class="col-md-4 control-label">Cedula:</label>
-                                                <div class="col-md-6">
-                                                    <input id='dniDemandante' type="number" class="form-control" name="dniDemandante" required>
-                                                </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="form-group">
+                                            <label for="dniDemandante" class="col-md-4 control-label">Cedula:</label>
+                                            <div class="col-md-6">
+                                                <input id='dniDemandante' type="number" class="form-control" name="dniDemandante" required>
                                             </div>
-                                           
-                                            
-                                        </li>
-                                        
+                                        </div>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="col-lg-6">
@@ -69,20 +63,82 @@
                                 </ul>
                             </div>    
                             <hr>
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label for="dni" class="control-label">Tipo de la demanda:</label>
+                                    <select class='form-control' value='0' name="type" size='1' require>                     
+                                        <option >Tipo</option>                    
+                                        <option value="1">V</option>                    
+                                    </select>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label for="dni" class="control-label">Motivo de la demanda:</label>
+                                    <select class='form-control' value='0' name="reason" size='1' require>                     
+                                        <option >Motivo</option>                    
+                                        <option value="1">V</option>                    
+                                    </select>
+                                </div>
+                            </div>
+                            <hr>
 
                             <div class='center' style='text-align: center;'>
-                                <h2>Foto del demandado:</h2>
-                                <input type="file" name='imgDemandado' class="hide inputfile" id="upload" data-multiple-caption="{count} files selected" multiple />
-                                <label for="upload"><span>Foto <i class='fa fa-upload'></i> </span></label>      
-                            </div>
-                            
-                            <hr>
-                            <div class='center' style='text-align: center;'><h2>Motivos de la Demanda:</h2></div>
-                            <div class="form-group">
-                                    <div class="col-md-6">
-                                        <textarea class='form-control' name="type" cols="80" rows="5" required></textarea>
+                                <div class="row">
+                                    <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6">
+                                        <h2>Foto del demandado:</h2>
+                                        <input type="file" name='imgDemandado' class="hide inputfile" id="upload" require data-multiple-caption="{count} files selected" multiple />
+                                        <label for="upload"><span>Foto<i class='fa fa-upload'></i> </span></label>      
                                     </div>
-                                </div> 
+                                    <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6">
+                                        <h4>La Partida de nacimiento del menor solo debe de estar en un formato (.JPG) o (.PNG).</h4>    
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class='center' style='text-align: center;'>
+                                <div class="row">
+                                    <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6">
+                                        <h2>PDF de la Partida de nacimiento del menor:</h2>
+                                        <input type="file" name='imgPartida' class="hide partida" id="partida" data-multiple-caption="{count} files selected" require  multiple />
+                                        <label for="partida"><span>PDF<i class='fa fa-upload'></i> </span></label>      
+                                    </div>
+                                    <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6">
+                                        <h4>La Partida de nacimiento del menor solo debe de estar en un formato (.PDF).</h4>    
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <hr>
+
+                            <div class='center' style='text-align: center;'>
+                                <div class="row">
+                                    <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6">
+                                        <h2>PDF de cedula del demandado:</h2>
+                                        <input type="file" name='imgDniDemandado' class="hide imgDniDemandado" id="imgDniDemandado" data-multiple-caption="{count} files selected" require  multiple />
+                                        <label for="imgDniDemandado"><span>PDF<i class='fa fa-upload'></i> </span></label>      
+                                    </div>
+                                    <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6">
+                                        <h4>La cedula del demandado solo debe de estar en un formato (.PDF).</h4>    
+                                    </div>
+                                </div>    
+                            </div>
+                            <hr>
+                            
+                            <div class='center' style='text-align: center;'>
+                                <div class="row">
+                                    <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
+                                        <h2>PDF de cedula del demandante:</h2>
+                                        <input type="file" name='imgDniDemandante' class="hide imgDniDemandante" id="imgDniDemandante" data-multiple-caption="{count} files selected" require multiple />
+                                        <label for="imgDniDemandante"><span>PDF<i class='fa fa-upload'></i> </span></label>      
+                                    </div>
+                                    <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
+                                        <h4>La cedula del demandante solo debe de estar en un formato (.PDF).</h4>    
+                                    </div>
+                                </div>
+                            </div>
                             <hr>
                         </div>
                         <button class='btn btn-primary btn-block'>Crear</button> 
