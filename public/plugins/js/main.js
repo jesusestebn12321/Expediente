@@ -79,12 +79,16 @@ Array.prototype.forEach.call( inputs, function( input )
 			label.innerHTML = labelVal;
 	});
 }); 
+<<<<<<< HEAD
 $( "#q" ).autocomplete({
     source : "{{ url('search/autocomplete') }}",
     minLength: 3,
     select: function(event, ui) {
       $('#q').val(ui.item.value);
     });
+=======
+
+>>>>>>> bf8fe7d73a07e3bed785f20f88180972f503be57
 function Destroy(id_row){
 	var id=$('#id'+id_row);
 	var code=$('#code'+id_row);
