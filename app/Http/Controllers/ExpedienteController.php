@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use App\ExpedienteDocument;
@@ -13,18 +12,7 @@ use App\ImagenDni;
 use App\reason;
 use App\type;
 use App\User;
-=======
-use App\Expediente;
-use App\ExpedienteDocument;
-use App\ImagenDni;
-use App\ImagenDocument;
-use App\ImagenPartida;
-use App\Reason;
-use App\type;
-use App\User;
-use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade as PDF;
->>>>>>> fc590adbbadc3a10868dca9388d20eacfcd2b4f3
+
 class ExpedienteController extends Controller{ 
     
     public function index(){
