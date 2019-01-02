@@ -61,20 +61,32 @@
                         @foreach ($expediente as $expedientes)
                         @if(Auth::user()->id == $expedientes->expediente->demandante->id || Auth::user()->id == $expedientes->expediente->demandado->id)
                             <tr id='tr{{$expedientes->id}}'>
+<<<<<<< HEAD
                             <input type="hidden" id='id{{$expedientes->expediente->id}}' value='{{$expedientes->expediente->id}}'>
                             <input type="hidden" id='code{{$expedientes->expediente->id}}' value='{{$expedientes->expediente->code}}'>
+=======
+                            <input type="hidden" id='id{{$expedientes->id}}' value='{{$expedientes->id}}'>
+                            <input type="hidden" id='code{{$expedientes->id}}' value='{{$expedientes->code}}'>
+>>>>>>> fc590adbbadc3a10868dca9388d20eacfcd2b4f3
                                 <td>{{$expedientes->expediente->code}}</td>
                                 <td>{{$expedientes->expediente->demandado->pais == 1 ? 'V-' : 'E-'}}{{$expedientes->expediente->demandado->dni}}</td>
                                 <td>{{$expedientes->expediente->demandante->pais == 1 ? 'V-' : 'E-'}}{{$expedientes->expediente->demandante->dni}}</td>
                                 <td>{{$expedientes->expediente->created_at}}</td>
                                 <td>
                                     {{$expedientes->expediente->updated_at!=$expedientes->expediente->created_at ?
+<<<<<<< HEAD
                                     $expedientes->expediente->updated_at :
+=======
+                                    $expedientes->updated_at :
+>>>>>>> fc590adbbadc3a10868dca9388d20eacfcd2b4f3
                                     'No a sido modificado'}}
                                 </td>
                                 @if(Auth::user()->rol!=1)
                                 <td>
+<<<<<<< HEAD
                                     
+=======
+>>>>>>> fc590adbbadc3a10868dca9388d20eacfcd2b4f3
                                     {{Auth::user()->id != $expedientes->expediente->demandante->id ? 'Demandante' : 'Demandado'}}
                                 </td>
                                 @endif
