@@ -3,11 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row">
-        @if (session('status'))
-        <div class="alert alert-success">
-            {{ session('status') }}
-        </div>
-        @endif
+        
+        <hr>
         <h1 class='app-sub-titulo'> <i class='fa fa-file'></i>Codigo del <b>E</b>xpediente  {{$expediente->code}} </h1><hr>   
         <hr>
     </div>      
@@ -69,7 +66,7 @@
                                         <h2>Demandado</h2>
                                     </div>
                                     <div class="col-lg-5">
-                                        <img class='app-img-DD-pdf' src="{{asset('uploads/images/'.$expediente->imgDemandado)}}" alt="">                        
+                                        <img class='app-img-DD-pdf' src="{{asset('uploads/images/demandado/'.$expediente->imgDemandado)}}" alt="">                        
                                     </div>
                                 </div>
                             </li>
@@ -120,10 +117,22 @@
                         <div class="row">
                             <ul class="list-group">
                             <li class="list-group-item bg-blue-gradient" >
+                                <h2>Tipo de la demanda</h2>    
+                            </li>
+                            <li class="list-group-item"> 
+                                <p>{{$expediente->type->type}}</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <ul class="list-group">
+                            <li class="list-group-item bg-aqua-gradient" >
                                 <h2>Motivo de la demanda</h2>    
                             </li>
                             <li class="list-group-item"> 
-                                <p>{{$expediente->type}}</p>
+                                <p>{{$expediente->reason->reason}}</p>
                             </li>
                         </ul>
                     </div>
