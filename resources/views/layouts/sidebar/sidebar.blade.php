@@ -25,6 +25,16 @@
           <i class="fa fa-plus"></i> <span>Crear Expediente</span>
         </a>
       </li>
+      <li class="treeview">
+        <a href="{{route('manageAdmin-reason-index')}}">
+          <i class="fa fa-plus"></i> <span>Motivos De Demanda</span>
+        </a>
+      </li>
+      <li class="treeview">
+        <a href="{{route('manageAdmin-type-index')}}">
+          <i class="fa fa-plus"></i> <span>Tipos de Demanda</span>
+        </a>
+      </li>
       @else
         <li class="treeview">
           <a href="{{route('manageUser-Expediente-index')}}">

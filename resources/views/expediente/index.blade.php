@@ -8,7 +8,12 @@
 @section('content')
 <main>
     <div class="container">
-        <div class="row">
+        <div class="row"><hr>
+            @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+        @endif
             @if(Session::has('message'))
             <div class='alert alert-success'>
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -54,39 +59,40 @@
                     <tbody>
                        
                         @foreach ($expediente as $expedientes)
-                        @if(Auth::user()->id == $expedientes->demandante->id || Auth::user()->id == $expedientes->demandado->id)
+                        @if(Auth::user()->id == $expedientes->expediente->demandante->id || Auth::user()->id == $expedientes->expediente->demandado->id)
                             <tr id='tr{{$expedientes->id}}'>
-                            <input type="hidden" id='id{{$expedientes->id}}' value='{{$expedientes->id}}'>
-                            <input type="hidden" id='code{{$expedientes->id}}' value='{{$expedientes->code}}'>
-                                <td>{{$expedientes->code}}</td>
-                                <td>{{$expedientes->demandado->pais == 1 ? 'V-' : 'E-'}}{{$expedientes->demandado->dni}}</td>
-                                <td>{{$expedientes->demandante->pais == 1 ? 'V-' : 'E-'}}{{$expedientes->demandante->dni}}</td>
-                                <td>{{$expedientes->created_at}}</td>
+                            <input type="hidden" id='id{{$expedientes->expediente->id}}' value='{{$expedientes->expediente->id}}'>
+                            <input type="hidden" id='code{{$expedientes->expediente->id}}' value='{{$expedientes->expediente->code}}'>
+                                <td>{{$expedientes->expediente->code}}</td>
+                                <td>{{$expedientes->expediente->demandado->pais == 1 ? 'V-' : 'E-'}}{{$expedientes->expediente->demandado->dni}}</td>
+                                <td>{{$expedientes->expediente->demandante->pais == 1 ? 'V-' : 'E-'}}{{$expedientes->expediente->demandante->dni}}</td>
+                                <td>{{$expedientes->expediente->created_at}}</td>
                                 <td>
-                                    {{$expedientes->updated_at!=$expedientes->created_at ?
-                                    $expedientes->updated_at :
+                                    {{$expedientes->expediente->updated_at!=$expedientes->expediente->created_at ?
+                                    $expedientes->expediente->updated_at :
                                     'No a sido modificado'}}
                                 </td>
                                 @if(Auth::user()->rol!=1)
                                 <td>
-                                    {{Auth::user()->id != $expedientes->demandante->id ? 'Demandante' : 'Demandado'}}
+                                    
+                                    {{Auth::user()->id != $expedientes->expediente->demandante->id ? 'Demandante' : 'Demandado'}}
                                 </td>
                                 @endif
                                 <td>
                                     @if (Auth::user()->rol==1)
-                                    <a class='btn btn-danger' href="#" onclick="Destroy({{$expedientes->id}})"><i class='fa fa-remove'></i></a>
-                                    <a class='btn btn-warning' href="{{route('manageAdmin-Expediente-edit', $expedientes->id)}}"><i class='fa fa-edit'></i></a>
-                                    <a href="{{route('manageAdmin-Expediente-show', $expedientes->id)}}" class='btn btn-info'><i class='fa fa-eye'></i></a>
-                                    <a class='btn btn-success' href="{{route('manageAdmin-Expediente-download', $expedientes->id)}}"><i class='fa fa-download'></i></a>
+                                    <a class='btn btn-danger' title='Eliminar Expediente' href="#" onclick="Destroy({{$expedientes->id}})"><i class='fa fa-remove'></i></a>
+                                    <a class='btn btn-warning' title='Editar Expediente' href="{{route('manageAdmin-Expediente-edit', $expedientes->expediente->id)}}"><i class='fa fa-edit'></i></a>
+                                    <a href="{{route('manageAdmin-Expediente-show', $expedientes->expediente->id)}}" title='Ver Expediente' class='btn btn-info'><i class='fa fa-eye'></i></a>
+                                    <a class='btn btn-success' title='Descargar PDF' href="{{route('manageAdmin-Expediente-download', $expedientes->expediente->id)}}"><i class='fa fa-download'></i></a>
+                                    <a class='btn bg-maroon-gradient' title='Anexar documenteto' href="{{route('manageAdmin-Document-index', $expedientes->expediente->id)}}"><i class='fa fa-file'></i></a>
                                     @else
-                                    <a href="{{route('manageUser-Expediente-show', $expedientes->id)}}" class='btn btn-info'><i class='fa fa-eye'></i></a>
-                                    <a class='btn btn-success' href="{{route('manageUser-Expediente-download', $expedientes->id)}}"><i class='fa fa-download'></i></a>
+                                    <a href="{{route('manageUser-Expediente-show', $expedientes->expediente->id)}}" class='btn btn-info'><i class='fa fa-eye'></i></a>
+                                    <a class='btn btn-success' title='Descargar PDF' href="{{route('manageUser-Expediente-download', $expedientes->expediente->id)}}"><i class='fa fa-download'></i></a>
                                     @endif
                                 </td>
                             </tr>
                         @endif
                         @endforeach
-                        
                         </tbody>
                 </table>
             </div>     

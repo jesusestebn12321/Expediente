@@ -24,19 +24,14 @@ class CreateExpedientesTable extends Migration
                      ->on('imagen_partidas')
                      ->onDelete('cascade');
             
-            $table->integer('imagen_dni_id')->unsigned();
-            $table->foreign('imagen_dni_id')->references('id')
+            $table->integer('imagen_dni_demandante_id')->unsigned();
+            $table->foreign('imagen_dni_demandante_id')->references('id')
                      ->on('imagen_dnis')
                      ->onDelete('cascade');
             
-            $table->integer('imagen_document_id')->unsigned();
-            $table->foreign('imagen_document_id')->references('id')
-                     ->on('imagen_documents')
-                     ->onDelete('cascade');
-            
-            $table->integer('type_reason_id')->unsigned();
-            $table->foreign('type_reason_id')->references('id')
-                     ->on('type_reasons')
+            $table->integer('imagen_dni_demandado_id')->unsigned();
+            $table->foreign('imagen_dni_demandado_id')->references('id')
+                     ->on('imagen_dnis')
                      ->onDelete('cascade');
             
             $table->integer('demandado_user_id')->unsigned();
@@ -48,6 +43,16 @@ class CreateExpedientesTable extends Migration
             $table->foreign('demandante_user_id')->references('id')
                      ->on('users')
                      ->onDelete('cascade');
+
+            $table->integer('type_id')->unsigned();
+            $table->foreign('type_id')->references('id')
+                    ->on('types')
+                    ->onDelete('cascade');
+                    
+            $table->integer('reason_id')->unsigned();
+            $table->foreign('reason_id')->references('id')
+                    ->on('reasons')
+                    ->onDelete('cascade');
             
             $table->timestamps();
         });

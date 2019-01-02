@@ -10,7 +10,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
         z-index: -1;
     }
     
-    label[for="upload"], label[for="partida"],label[for="imgDniDemandado"],label[for="imgDniDemandante"] {
+    label[for="upload"], label[for="partida"],label[for="imgDniDemandado"],label[for="imgDniDemandante"],label[for="imgDocument"] {
         display: inline-block;
         cursor:pointer;
         padding: 10px 30px;

@@ -11,18 +11,7 @@
         <h1 class='app-sub-titulo'> <i class='fa fa-dashboard'></i> <b>D</b>ashboard {{Auth::user()->rol==1 ? '- Admin' : ''}}</h1><hr>   
         <hr>
         @if (Auth::user()->rol==1)
-        <div class='col-xs-6 col-lg-6 col-md-6'>
-            <div class="small-box bg-aqua">
-                <div class="inner">
-                    <h3>Expedientes</h3>
-                    <p>Se mostrara una lista de espediente podra, descargarlos, borrarlos, editarlos y verlos </p>
-                </div>
-                <div class="icon" style='margin-top:1rem'>
-                    <i class="fa fa-file"></i>
-                </div>
-                <a href="{{route('manageAdmin-Expediente-index')}}" class="small-box-footer">IR <i class="fa fa-arrow-eye"></i></a>
-            </div>
-        </div>        
+             
         <div class='col-xs-6 col-lg-6 col-md-6'>
             <div class="small-box bg-blue">
                 <div class="inner">
@@ -35,6 +24,42 @@
                 <a href="{{route('manageAdmin-Expediente-create')}}" class="small-box-footer">IR <i class="fa fa-arrow-eye"></i></a>
             </div>
         </div> 
+        <div class='col-xs-6 col-lg-6 col-md-6'>
+            <div class="small-box bg-navy">
+                <div class="inner">
+                    <h3>Motivos de demandas</h3>
+                    <p>Agreaga, elimina y edita los motivos de las demandas</p>
+                </div>
+                <div class="icon" style='margin-top:1rem'>
+                    <i class="fa fa-file"></i>
+                </div>
+                <a href="{{route('manageAdmin-reason-index')}}" class="small-box-footer">IR <i class="fa fa-arrow-eye"></i></a>
+            </div>
+        </div> 
+        <div class='col-xs-6 col-lg-6 col-md-6'>
+            <div class="small-box bg-green-gradient">
+                <div class="inner">
+                    <h3>Tipos de demandas</h3>
+                    <p>Agreaga, elimina y edita los tipo de las demandas</p>
+                </div>
+                <div class="icon" style='margin-top:1rem'>
+                    <i class="fa fa-file"></i>
+                </div>
+                <a href="{{route('manageAdmin-type-index')}}" class="small-box-footer">IR <i class="fa fa-arrow-eye"></i></a>
+            </div>
+        </div> 
+        <div class='col-xs-6 col-lg-6 col-md-6'>
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>Expedientes</h3>
+                    <p>Se mostrara una lista de espediente podra, descargarlos, borrarlos, editarlos y verlos </p>
+                </div>
+                <div class="icon" style='margin-top:1rem'>
+                    <i class="fa fa-file"></i>
+                </div>
+                <a href="{{route('manageAdmin-Expediente-index')}}" class="small-box-footer">IR <i class="fa fa-arrow-eye"></i></a>
+            </div>
+        </div>  
         @else
         <div class='col-xs-6 col-lg-6 col-md-6'>
             <div class="small-box bg-aqua">

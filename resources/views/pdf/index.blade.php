@@ -2,20 +2,21 @@
 <html lang="es">
   <head>
     <meta charset="utf-8">
-    <title>{{$expediente->code}}</title>
+    {{-- <title>{{$expediente->code}}</title> --}}
     <link rel="stylesheet" href="{{asset('css/style.css')}}" media="all" />
     <link rel="stylesheet" href="{{asset('css/app.css')}}" media="all" />
   </head>
   <body>
+    
     <header class="clearfix">
       <div id="logo">
         <img src="{{asset('img/escudo.png')}}">
       </div>
         <h2 class="name">Republoca Bolivariana de Venezuela</h2>
         <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora provident tenetur cupiditate veritatis laboriosam mollitia necessitatibus excepturi fugiat, repudiandae debitis, repellendus quidem labore quaerat, quia eum voluptatibus? At, reiciendis saepe?</div>
-    </header>
-    <main>
-        <div id="details" class="clearfix">
+    </header> 
+     <main>
+      <div id="details" class="clearfix">
             <div id="client">
               <div class="name"> <h3>Demandante</h3> </div>
               <h3>{{$expediente->demandante->name .' '. $expediente->demandante->lastname}}</h3>
@@ -27,7 +28,7 @@
         </div>
       </div>
       <table>
-          <thead>
+        <thead>
             <tr>
               <th><h2 class="name">Demandado</h2></th>
               <th></th>
@@ -42,16 +43,22 @@
               </td>
               <td>
                 <div style="padding:10px;width:50px;heagth:10px;border-radius:3px;border:1px solid aqua">
-                  <img src="{{asset('uploads/images/'.$expediente->imgDemandado)}}" alt="demandado imagen" style="width:100%">
+                  <img src="{{asset('uploads/images/demandado/'.$expediente->imgDemandado)}}" alt="demandado imagen" style="width:100%">
                 </div>
                 </td>
             </tr>
           </tbody>
         </table>
       
+      <div id="thanks">Tipo de la demanda</div>
+        <div id="notices">
+          <div class="notice">{{$expediente->type->type}}</div>
+        </div>
+      </div>
       <div id="thanks">Motivo de la demanda</div>
-      <div id="notices">
-        <div class="notice">{{$expediente->type}}</div>
+        <div id="notices">
+          <div class="notice">{{$expediente->reason->reason}}</div>
+        </div>
       </div>
     </main>
     <footer>
@@ -59,15 +66,19 @@
         <tbody>
           <tr>
             <td>Fecha de Inicio: <b>{{$expediente->created_at}}</b> </td>
-            <td>Fecha de Cierre: <b>___/___/____</b></td>
             <td></td>
           </tr>
         </tbody>
       </table>
-      <span></span>
-      <span>
-       
-      </span>
+      {{-- @foreach ($expedienteDocument as $expedienteDocuments)
+      @if ($expedienteDocuments->expediente->id==$id)
+      <iframe width="400" height="400" src="{{asset('uploads/images/document/'.$expedienteDocuments->document->imagen)}}" frameborder="0"></iframe><br>
+      <embed src="{{asset('uploads/images/document/'.$expedienteDocuments->document->imagen)}}" type="application/pdf" width="800" height="600"></embed>
+        <img src="{{asset('uploads/images/document/'.$expedienteDocuments->document->imagen)}}" alt="d">
+        <p>{{$expedienteDocuments->document->imagen}}   </p>
+        @endif
+      @endforeach  --}}
     </footer>
   </body>
-</html>
+  </html>
+  

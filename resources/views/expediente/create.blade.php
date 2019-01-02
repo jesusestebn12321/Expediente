@@ -1,13 +1,10 @@
 @extends('layouts.appUser')
 <title>Crear | Expedientes</title>
-@section('js')
-@endsection
+
 @section('content')
-<style>
-    
-  </style>
 <div class="container">
     <div class="row">
+        <hr>
         @if(Session::has('message'))
             <div class='alert alert-danger'>
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -40,6 +37,7 @@
                                                 <input id='dniDemandante' type="number" class="form-control" name="dniDemandante" required>
                                             </div>
                                         </div>
+                                        
                                     </li>
                                 </ul>
                             </div>
@@ -65,21 +63,23 @@
                             <hr>
                             <div class="form-group">
                                 <div class="col-md-6">
-                                    <label for="dni" class="control-label">Tipo de la demanda:</label>
-                                    <select class='form-control' value='0' name="type" size='1' require>                     
-                                        <option >Tipo</option>                    
-                                        <option value="1">V</option>                    
-                                    </select>
+                                    <h2>Tipos de Demandas</h2><hr>
+                                    @foreach ($type as $types)
+                                        <label class='btn btn-secondary bg-aqua-gradient'>{{$types->type}}
+                                            <input  type="radio" autocomplete="off" value="{{$types->id}}" name="type" id="{{$types->id}}">
+                                        </label>
+                                    @endforeach        
                                 </div>
                             </div>
                             <hr>
                             <div class="form-group">
                                 <div class="col-md-6">
-                                    <label for="dni" class="control-label">Motivo de la demanda:</label>
-                                    <select class='form-control' value='0' name="reason" size='1' require>                     
-                                        <option >Motivo</option>                    
-                                        <option value="1">V</option>                    
-                                    </select>
+                                    <h2>Tipos de Demandas</h2><hr>
+                                    @foreach ($reason as $reasons)
+                                        <label class='btn btn-secondary bg-red-gradient'>{{$reasons->reason}}
+                                            <input  type="radio" autocomplete="off" value="{{$reasons->id}}" name="reason" id="{{$reasons->id}}">
+                                        </label>
+                                    @endforeach
                                 </div>
                             </div>
                             <hr>
@@ -136,6 +136,19 @@
                                     </div>
                                     <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
                                         <h4>La cedula del demandante solo debe de estar en un formato (.PDF).</h4>    
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class='center' style='text-align: center;'>
+                                <div class="row">
+                                    <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
+                                        <h2>PDF de Documento:</h2>
+                                        <input type="file" name='imgDocument' class="hide imgDocument" id="imgDocument" data-multiple-caption="{count} files selected" require multiple />
+                                        <label for="imgDocument"><span>PDF<i class='fa fa-upload'></i> </span></label>      
+                                    </div>
+                                    <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
+                                        <h4>Documento solo debe de estar en un formato (.PDF).</h4>    
                                     </div>
                                 </div>
                             </div>

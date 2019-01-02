@@ -9,8 +9,6 @@ class type extends Model{
     protected $fillable = ['id','type'];
     
     public function typeReason(){
-    	return  $this->hasMany('\App\type_reason','type_id');
+    	return  $this->hasMany('\App\Expediente','type_id');
     }
-
-
 }
