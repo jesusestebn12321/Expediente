@@ -1,7 +1,3 @@
-@font-face {
-  font-family: SourceSansPro;
-  src: url(SourceSansPro-Regular.ttf);
-}
 
 .clearfix:after {
   content: "";
@@ -12,7 +8,7 @@
   text-align: center;
 }
 a {
-  color: #0087C3;
+  color: #c35800;
   text-decoration: none;
 }
 
@@ -55,7 +51,7 @@ header {
 
 #client {
   padding-left: 6px;
-  border-left: 6px solid #0087C3;
+  border-left: 6px solid #c35800;
   float: left;
 }
 
@@ -75,7 +71,7 @@ h2.name {
 }
 
 #invoice h1 {
-  color: #0087C3;
+  color: #c35800;
   font-size: 2.4em;
   line-height: 1em;
   font-weight: normal;
@@ -112,7 +108,7 @@ table td {
 }
 
 table td h3{
-  color: #57B223;
+  color: #c93b22;
   font-size: 1.2em;
   font-weight: normal;
   margin: 0 0 0.2em 0;
@@ -121,7 +117,7 @@ table td h3{
 table .no {
   color: #FFFFFF;
   font-size: 1.6em;
-  background: #57B223;
+  background: #c93b22;
 }
 
 table .desc {
@@ -136,7 +132,7 @@ table .qty {
 }
 
 table .total {
-  background: #57B223;
+  background: #c93b22;
   color: #FFFFFF;
 }
 
@@ -164,9 +160,9 @@ table tfoot tr:first-child td {
 }
 
 table tfoot tr:last-child td {
-  color: #57B223;
+  color: #c93b22;
   font-size: 1.4em;
-  border-top: 1px solid #57B223; 
+  border-top: 1px solid #c93b22; 
 
 }
 
@@ -181,7 +177,7 @@ table tfoot tr td:first-child {
 
 #notices{
   padding-left: 6px;
-  border-left: 6px solid #0087C3;  
+  border-left: 6px solid #c35800;  
 }
 
 #notices .notice {

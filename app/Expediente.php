@@ -9,10 +9,9 @@ class Expediente extends Model{
     protected $table='expedientes';
     protected $fillable = ['id','code','imgDemandado','imagen_partida_id','imagen_dni_demandante_id','imagen_dni_demandado_id','type_id','reason_id','demandado_user_id','demandante_user_id'];
 
-    public function partida(){
+    public function imagePartida(){
     	return  $this->belongsTo('\App\ImagenPartida','imagen_partida_id');
     }
-    
     public function imageDniDemandante(){
     	return  $this->belongsTo('\App\ImagenDni','imagen_dni_demandante_id');
     }

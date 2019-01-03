@@ -16,7 +16,7 @@ use App\User;
 class ExpedienteController extends Controller{ 
     
     public function index(){
-       $expediente= ExpedienteDocument::all();
+       $expediente= Expediente::all();
        return view('Expediente.index', compact('expediente'));
     }
 
@@ -126,7 +126,8 @@ class ExpedienteController extends Controller{
     public function show($id){
        //
        $expediente= Expediente::find($id);
-       return view('Expediente.show',compact('expediente'));
+       $document= ExpedienteDocument::where('expediente_id',$id)->get();
+       return view('Expediente.show',compact('expediente','document'));
     }
 
     public function edit($id){
@@ -172,7 +173,7 @@ class ExpedienteController extends Controller{
        exit('Expediente Eliminado safictoriamente');
    }
 
-    public function download($id){
+    public function download($id){ 
         $expedienteDocument= ExpedienteDocument::all();
         $expediente= Expediente::find($id);
         $id=$id;

@@ -137,6 +137,26 @@
                         </ul>
                     </div>
                     <hr>
+                    <h2>Documentos en pdf</h2><hr>
+                        <div>
+                            <h3>Identificacion del Demandate</h3>
+                            <embed src="{{asset('uploads/images/dni/'.$expediente->imageDniDemandante->imagen)}}" type="application/pdf" width="800" height="600"></embed>
+                        </div>
+                        <div>
+                            <h3>Identificacion del Demandado</h3>
+                            <embed src="{{asset('uploads/images/dni/'.$expediente->imageDniDemandado->imagen)}}" type="application/pdf" width="800" height="600"></embed>
+                        </div>
+                        <div>
+                            <h3>Partida de Nacimiento</h3>
+                            <embed src="{{asset('uploads/images/partida/'.$expediente->imagePartida->imagen)}}" type="application/pdf" width="800" height="600"></embed>
+                        </div>
+                        <h3>Documente Anexados</h3>
+                        @foreach ($document as $documents)
+                        <div><br>
+                            <embed src="{{asset('uploads/images/document/'.$documents->document->imagen)}}" type="application/pdf" width="800" height="600"></embed>
+                        </div>
+                        @endforeach
+                    <hr>
                     <div class="row" style='text-align: center;'>
                         <div class="col-lg-5">
                             <label for="">Fecha de Inicio</label>
