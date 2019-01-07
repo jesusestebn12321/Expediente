@@ -111,7 +111,7 @@ function upDateType(id_row){
 	$('#editType'+id_row).toggleClass('hidden');
 	$('#type'+id_row).toggleClass('hidden');
 	$.ajax({
-			url: "http://localhost/expedienteDigitall/public/Types/Update/"+id_row,
+			url: `Reasons/Update/`+id_row,
 			method: 'GET',
 			dataType: 'text',
 			data: {
@@ -122,14 +122,13 @@ function upDateType(id_row){
 			});
 			$('#type'+id_row).val($('#inputType'+id_row).val());
 		}
-	});
-			
+	});			
 }
 $('#storeType').click(function(){
 	var type=$('#typeStore');
 	
 	$.ajax({
-		url: "http://localhost/expedienteDigitall/public/Types/Store",
+		url: `Types/Store`,
 		type: "GET",
 		dataType: "text",
 		data: {
@@ -155,7 +154,7 @@ function DestroyType(id_row){
 	}).then((willDelete) => {
 		if (willDelete) {
 			$.ajax({
-				url: "http://localhost/expedienteDigitall/public/Types/Delete/"+id.val(),
+				url: `Types/Delete/`+id.val(),
 				method: 'GET',
 				dataType: 'text',
 				data: {
@@ -164,6 +163,10 @@ function DestroyType(id_row){
 					$('#tr'+id_row).addClass('hidden');
 					swal(respuesta, {
 						icon: "success",
+					});
+				},error(e){
+					swal('Error en url', {
+						icon: "error",
 					});
 				}
 			});
@@ -186,9 +189,8 @@ function editReason(id_row){
 }
 $('#storeReason').click(function(){
 	var reason=$('#reasonStore');
-	
 	$.ajax({
-		url: "http://localhost/expedienteDigitall/public/Reasons/Store",
+		url: `Reasons/Store`,
 		type: "GET",
 		dataType: "text",
 		data: {
@@ -209,7 +211,7 @@ function upDateReason(id_row){
 	$('#editReason'+id_row).toggleClass('hidden');
 	$('#reason'+id_row).toggleClass('hidden');
 	$.ajax({
-			url: "http://localhost/expedienteDigitall/public/Reasons/Update/"+id_row,
+			url: `Reasons/Update/`+id_row,
 			method: 'GET',
 			dataType: 'text',
 			data: {
@@ -220,8 +222,7 @@ function upDateReason(id_row){
 			});
 			$('#reason'+id_row).val($('#inputReason'+id_row).val());
 		}
-	});
-			
+	});		
 }
 function DestroyReason(id_row){
 	var id=$('#id'+id_row);
@@ -234,7 +235,7 @@ function DestroyReason(id_row){
 	}).then((willDelete) => {
 		if (willDelete) {
 			$.ajax({
-				url: `http://localhost/expedienteDigitall/public/Reasons/Delete/`+id.val(),
+				url: `Reasons/Delete/`+id.val(),
 				method: 'GET',
 				dataType: 'text',
 				data: {
@@ -243,6 +244,10 @@ function DestroyReason(id_row){
 					$('#tr'+id_row).addClass('hidden');
 					swal(respuesta, {
 						icon: "success",
+					});
+				},error(e){
+					swal('Error de ruta', {
+						icon: "error",
 					});
 				}
 			});
@@ -258,36 +263,39 @@ function DestroyReason(id_row){
 // reason end
 // expediente destroy
 function Destroy(id_row){
-		alert(id_row);
-		swal({
-			title: "¿Desea eliminar este expediente ?",
-			text: "El expediente se eliminara en caso de que precione OK!",
-			icon: "warning",
-			buttons: true,
-			dangerMode: true,
-		}).then((willDelete) => {
-			if (willDelete) {
-				$.ajax({
-					url: "http://localhost/expedienteDigitall/public/Expedientes/Destroy/"+1,
-					method: 'GET',
-					dataType: 'text',
-					data: {
-						id: 1
-					},success: function (respuesta) {
-						$('#tr'+id_row).addClass('hidden');
-						swal(respuesta, {
-							icon: "success",
-						});
-					},error(e){
-						alert(e);
-					}
-				});
-				
-			}else{
-	
-				swal("El Expediente No sera eliminado!",{
-					icon:"info",
-				});
-			}
-		});
+	var id=$('#id'+id_row);
+    swal({
+		title: "¿Desea eliminar este Expediente "+id.val() +" ?",
+		text: "El motivo se eliminara en caso de que precione OK!",
+		icon: "warning",
+		buttons: true,
+		dangerMode: true,
+	}).then((willDelete) => {
+		if (willDelete) {
+			$.ajax({
+				url: `http://localhost/expedienteDigitall/public/Expedientes/Destroy/`+id.val(),
+				method: 'GET',
+				dataType: 'text',
+				data: {
+					id: id.val()
+				},success: function (respuesta) {
+					$('#tr'+id_row).addClass('hidden');
+					swal(respuesta, {
+						icon: "success",
+					});
+				},error(e){
+					swal('Error de ruta', {
+						icon: "error",
+					});
+				}
+			});
+			
+		}else{
+
+			swal("El motivo No sera eliminado!",{
+				icon:"info",
+			});
+		}
+	});
+
 }

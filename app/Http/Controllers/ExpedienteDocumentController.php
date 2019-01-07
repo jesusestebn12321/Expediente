@@ -215,12 +215,16 @@ class ExpedienteDocumentController extends Controller{
      */
     public function destroy($id){
         //
-        $expediente= ExpedienteDocument::find($id);
-        $expe= Expediente::find($expediente->expediente->id);
+        $expediente= ExpedienteDocument::where('expediente_id',5)->get();
+        $expe= Expediente::find($id);
+        
+        foreach ($expediente as $expedientes) {
+            # code...
+            
+            $expedientes->delete();
+          
+        }
         $expe->delete();
-        $doc= Expediente::find($expediente->document->id);
-        $doc->delete();
-        $expediente->delete();
         exit('Expediente Eliminado safictoriamente');
     }
 }
