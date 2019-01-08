@@ -87,12 +87,12 @@
                             <div class='center' style='text-align: center;'>
                                 <div class="row">
                                     <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6">
-                                        <h2>Foto del demandado:</h2>
+                                        <h2>PDF del acta de matrimonio:</h2>
                                         <input type="file" name='imgDemandado' class="hide inputfile" id="upload" require data-multiple-caption="{count} files selected" multiple />
-                                        <label for="upload"><span>Foto<i class='fa fa-upload'></i> </span></label>      
+                                        <label for="upload"><span>PDF<i class='fa fa-upload'></i> </span></label>      
                                     </div>
                                     <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6">
-                                        <h4>La Partida de nacimiento del menor solo debe de estar en un formato (.JPG) o (.PNG).</h4>    
+                                        <h4>El acta de matrimonio se debe de encontrar en un formato (.PDF).</h4>    
                                     </div>
                                 </div>
                             </div>

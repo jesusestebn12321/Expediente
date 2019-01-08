@@ -111,7 +111,7 @@ function upDateType(id_row){
 	$('#editType'+id_row).toggleClass('hidden');
 	$('#type'+id_row).toggleClass('hidden');
 	$.ajax({
-			url: `Reasons/Update/`+id_row,
+			url: 'http://localhost/Expediente/public/Types/Update/'+id_row,
 			method: 'GET',
 			dataType: 'text',
 			data: {
@@ -128,7 +128,7 @@ $('#storeType').click(function(){
 	var type=$('#typeStore');
 	
 	$.ajax({
-		url: `Types/Store`,
+		url: 'http://localhost/Expediente/public/Types/Store',
 		type: "GET",
 		dataType: "text",
 		data: {
@@ -140,6 +140,8 @@ $('#storeType').click(function(){
 			});
 			$(form)[0].reset();
 			$('#newType').val(type.val());
+			location.reload();
+			
 		}
 	});
 });
@@ -154,7 +156,7 @@ function DestroyType(id_row){
 	}).then((willDelete) => {
 		if (willDelete) {
 			$.ajax({
-				url: `Types/Delete/`+id.val(),
+				url: 'http://localhost/Expediente/public/Types/Delete/'+id.val(),
 				method: 'GET',
 				dataType: 'text',
 				data: {
@@ -190,7 +192,7 @@ function editReason(id_row){
 $('#storeReason').click(function(){
 	var reason=$('#reasonStore');
 	$.ajax({
-		url: `Reasons/Store`,
+		url: 'http://localhost/Expediente/public/Reasons/Store',
 		type: "GET",
 		dataType: "text",
 		data: {
@@ -202,6 +204,7 @@ $('#storeReason').click(function(){
 			});
 			$(form)[0].reset();
 			$('#newReason').val(reason.val());
+			location.reload();
 		}
 	});
 });
@@ -211,7 +214,7 @@ function upDateReason(id_row){
 	$('#editReason'+id_row).toggleClass('hidden');
 	$('#reason'+id_row).toggleClass('hidden');
 	$.ajax({
-			url: `Reasons/Update/`+id_row,
+			url: 'http://localhost/Expediente/public/Reasons/Update/'+id_row,
 			method: 'GET',
 			dataType: 'text',
 			data: {
@@ -235,7 +238,7 @@ function DestroyReason(id_row){
 	}).then((willDelete) => {
 		if (willDelete) {
 			$.ajax({
-				url: `Reasons/Delete/`+id.val(),
+				url: 'http://localhost/Expediente/public/Reasons/Delete/'+id.val(),
 				method: 'GET',
 				dataType: 'text',
 				data: {
@@ -273,7 +276,7 @@ function Destroy(id_row){
 	}).then((willDelete) => {
 		if (willDelete) {
 			$.ajax({
-				url: `http://localhost/expedienteDigitall/public/Expedientes/Destroy/`+id.val(),
+				url: 'http://localhost/Expediente/public/Expedientes/Destroy/'+id.val(),
 				method: 'GET',
 				dataType: 'text',
 				data: {

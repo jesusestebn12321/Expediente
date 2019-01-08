@@ -65,9 +65,6 @@
                                     <div class="col-lg-7">
                                         <h2>Demandado</h2>
                                     </div>
-                                    <div class="col-lg-5">
-                                        <img class='app-img-DD-pdf' src="{{asset('uploads/images/demandado/'.$expediente->imgDemandado)}}" alt="">                        
-                                    </div>
                                 </div>
                             </li>
                             <li class="list-group-item">
@@ -138,6 +135,18 @@
                     </div>
                     <hr>
                     <h2>Documentos en pdf</h2><hr>
+                        @if($expediente->imgDemandado!='null')
+                        <h3>Acta de Matrimonio</h3>
+                        <div>
+                            <embed src="{{asset('uploads/images/actas/'.$expediente->imgDemandado)}}" type="application/pdf" width="800" height="600"></embed>
+                        </div>
+                        @endif
+                        @if($expediente->imagePartida->imagen!='null')
+                        <div>
+                            <h3>Partida de Nacimiento</h3>
+                            <embed src="{{asset('uploads/images/partida/'.$expediente->imagePartida->imagen)}}" type="application/pdf" width="800" height="600"></embed>
+                        </div>
+                        @endif
                         <div>
                             <h3>Identificacion del Demandate</h3>
                             <embed src="{{asset('uploads/images/dni/'.$expediente->imageDniDemandante->imagen)}}" type="application/pdf" width="800" height="600"></embed>
@@ -145,10 +154,6 @@
                         <div>
                             <h3>Identificacion del Demandado</h3>
                             <embed src="{{asset('uploads/images/dni/'.$expediente->imageDniDemandado->imagen)}}" type="application/pdf" width="800" height="600"></embed>
-                        </div>
-                        <div>
-                            <h3>Partida de Nacimiento</h3>
-                            <embed src="{{asset('uploads/images/partida/'.$expediente->imagePartida->imagen)}}" type="application/pdf" width="800" height="600"></embed>
                         </div>
                         <h3>Documente Anexados</h3>
                         @foreach ($document as $documents)

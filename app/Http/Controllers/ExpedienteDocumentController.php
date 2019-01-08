@@ -68,13 +68,17 @@ class ExpedienteDocumentController extends Controller{
                     $expediente=new Expediente;
                     
                     if ($request->file()) {
-                        $extension=$request->file('imgDemandado')->getClientOriginalExtension();
-                        if($extension == 'jpg' || $extension=='png' ){
-                            // dd($extension);
-                            $file = $request->file('imgDemandado');
-                            $name = 'Demandado-' .$request->dniDemandado .'_'.time() . '.' . $extension;
-                            $path = public_path() . '/uploads/images/demandado';
-                            $file->move($path, $name);
+                        if($request->file('imgDemandado')){
+                            $extension=$request->file('imgDemandado')->getClientOriginalExtension();
+                            if($extension=='pdf'){
+                                // dd($extension);
+                                $file = $request->file('imgDemandado');
+                                $name = 'actaMatrimonio-' .$request->dniDemandado .'_'.time() . '.' . $extension;
+                                $path = public_path() . '/uploads/images/actas';
+                                $file->move($path, $name);
+                            }
+                        }else{
+                            $name='null';
                         }
                         $expediente->imgDemandado= $name;
                         
@@ -107,19 +111,23 @@ class ExpedienteDocumentController extends Controller{
                         $expediente->imagen_dni_demandado_id=$dniDemandado->id;
      
 
-                       $extension=$request->file('imgPartida')->getClientOriginalExtension();
-                       if($extension == 'pdf'){
-                           // dd($extension);
-                           $file = $request->file('imgPartida');
-                           $name = 'partida-' .$request->dniDemandate .'_'.time() . '.' . $extension;
-                           $path = public_path() . '/uploads/images/partida';
-                           $file->move($path, $name);
-                       }
-                       $Partida=new ImagenPartida;
-                       $Partida->imagen= $name;
-                       $Partida->save();
+                        if($request->file('imgPartida')){
+                            $extension=$request->file('imgPartida')->getClientOriginalExtension();
+                            if($extension == 'pdf'){
+                                // dd($extension);
+                                $file = $request->file('imgPartida');
+                                $name = 'partida-' .$request->dniDemandate .'_'.time() . '.' . $extension;
+                                $path = public_path() . '/uploads/images/partida';
+                                $file->move($path, $name);
+                            }
+                        }else{
+                            $name='null';
+                        }
+                        $Partida=new ImagenPartida;
+                        $Partida->imagen= $name;
+                        $Partida->save();
 
-                       $expediente->imagen_partida_id=$Partida->id;
+                        $expediente->imagen_partida_id=$Partida->id;
 
                    }
                    

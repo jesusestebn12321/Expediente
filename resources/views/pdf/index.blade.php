@@ -35,12 +35,7 @@
                 <th class="unit"><img src="" alt="Demandante"></th>
 
                 <th class="total">Demandado</th>
-                <th class="unit">
-                    <div style="padding:10px;width:50px;heagth:10px;border-radius:3px;border:1px solid aqua">
-                        <img src="{{asset('uploads/images/demandado/'.$expediente->imgDemandado)}}" alt="demandado imagen" style="width:100%">
-                      </div>
-                  
-                </th>
+                
               </tr>
             </thead>
             <tbody>
